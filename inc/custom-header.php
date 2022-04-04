@@ -14,33 +14,33 @@
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses hate_titenko_header_style()
+ * @uses ipze_header_style()
  */
-function hate_titenko_custom_header_setup() {
+function ipze_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'hate_titenko_custom_header_args',
+			'ipze_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'hate_titenko_header_style',
+				'wp-head-callback'   => 'ipze_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'hate_titenko_custom_header_setup' );
+add_action( 'after_setup_theme', 'ipze_custom_header_setup' );
 
-if ( ! function_exists( 'hate_titenko_header_style' ) ) :
+if ( ! function_exists( 'ipze_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see hate_titenko_custom_header_setup().
+	 * @see ipze_custom_header_setup().
 	 */
-	function hate_titenko_header_style() {
+	function ipze_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

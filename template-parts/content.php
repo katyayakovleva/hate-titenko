@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				hate_titenko_posted_on();
-				hate_titenko_posted_by();
+				ipze_posted_on();
+				ipze_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php hate_titenko_post_thumbnail(); ?>
+	<?php ipze_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -37,7 +37,7 @@
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'hate-titenko' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'ipze' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -50,7 +50,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'hate-titenko' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ipze' ),
 				'after'  => '</div>',
 			)
 		);
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php hate_titenko_entry_footer(); ?>
+		<?php ipze_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
