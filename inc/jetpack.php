@@ -33,7 +33,7 @@ function ipze_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'hate-titenko-style',
+				'stylesheet' => 'ipze-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',

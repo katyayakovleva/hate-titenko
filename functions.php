@@ -138,7 +138,6 @@ add_action( 'widgets_init', 'ipze_widgets_init' );
  * Enqueue scripts and styles.
  */
 function ipze_scripts() {
-	
 	wp_enqueue_style( 'ipze-style', get_stylesheet_uri(), array(), rand(111,9999));
 
 
@@ -146,9 +145,10 @@ function ipze_scripts() {
 	wp_enqueue_style('footer_css', get_template_directory_uri(). '/assets/css/footer.css', array(), rand(111,9999));
 	wp_enqueue_style('main_css', get_template_directory_uri(). '/assets/css/main.css', array(), rand(111,9999));
 	wp_enqueue_style('page_css', get_template_directory_uri(). '/assets/css/page.css', array(), rand(111,9999));
+
 	wp_enqueue_script( 'ipze-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), rand(111,9999), true );
 	wp_enqueue_script( 'ipze-jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), rand(111,9999), true );
-	// wp_enqueue_script( 'ipze-header-js', get_template_directory_uri() . '/assets/js/header.js', array(), rand(111,9999), true );
+	wp_enqueue_script( 'ipze-header-js', get_template_directory_uri() . '/assets/js/header.js', array(), rand(111,9999), true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
