@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function hate_titenko_setup() {
+function ipze_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on IPZE, use a find and replace
-		* to change 'hate-titenko' to the name of your theme in all the template files.
+		* to change 'ipze' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'hate-titenko', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ipze', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -49,7 +49,7 @@ function hate_titenko_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'hate-titenko' ),
+			'menu-1' => esc_html__( 'Primary', 'ipze' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function hate_titenko_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'hate_titenko_custom_background_args',
+			'ipze_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -100,7 +100,7 @@ function hate_titenko_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'hate_titenko_setup' );
+add_action( 'after_setup_theme', 'ipze_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +109,22 @@ add_action( 'after_setup_theme', 'hate_titenko_setup' );
  *
  * @global int $content_width
  */
-function hate_titenko_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'hate_titenko_content_width', 640 );
+function ipze_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'ipze_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'hate_titenko_content_width', 0 );
+add_action( 'after_setup_theme', 'ipze_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function hate_titenko_widgets_init() {
+function ipze_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'hate-titenko' ),
+			'name'          => esc_html__( 'Sidebar', 'ipze' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'hate-titenko' ),
+			'description'   => esc_html__( 'Add widgets here.', 'ipze' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +132,30 @@ function hate_titenko_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'hate_titenko_widgets_init' );
+add_action( 'widgets_init', 'ipze_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function hate_titenko_scripts() {
-	wp_enqueue_style( 'hate-titenko-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'hate-titenko-style', 'rtl', 'replace' );
+function ipze_scripts() {
+	
+	wp_enqueue_style( 'ipze-style', get_stylesheet_uri(), array(), rand(111,9999));
 
-	wp_enqueue_script( 'hate-titenko-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	wp_enqueue_style('header_css', get_template_directory_uri(). '/assets/css/header.css', array(), rand(111,9999));
+	wp_enqueue_style('footer_css', get_template_directory_uri(). '/assets/css/footer.css', array(), rand(111,9999));
+	wp_enqueue_style('main_css', get_template_directory_uri(). '/assets/css/main.css', array(), rand(111,9999));
+	wp_enqueue_style('page_css', get_template_directory_uri(). '/assets/css/page.css', array(), rand(111,9999));
+	wp_enqueue_script( 'ipze-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), rand(111,9999), true );
+	wp_enqueue_script( 'ipze-jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), rand(111,9999), true );
+	// wp_enqueue_script( 'ipze-header-js', get_template_directory_uri() . '/assets/js/header.js', array(), rand(111,9999), true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'hate_titenko_scripts' );
+add_action( 'wp_enqueue_scripts', 'ipze_scripts' );
 
 /**
  * Implement the Custom Header feature.
